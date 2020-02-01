@@ -31,12 +31,12 @@ list.insert(300);
 list.insert(200);
 
 LinkedList.prototype.removeNode = function(list, position) {
-    let current = list;
+    let current = list.head;
     let index = 0;
     let pre = null;
     while(true){
         if(position == 0){
-            return list.next;
+            return list.head.next;
         }
         if(index == position){
             let temp = current;
@@ -48,7 +48,7 @@ LinkedList.prototype.removeNode = function(list, position) {
         current = current.next;
         index++;
     }    
-    return list;
+    return list.head;
 }
 
 list.head = LinkedList.prototype.removeNode(list, 2);
