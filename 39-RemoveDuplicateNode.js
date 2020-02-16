@@ -34,14 +34,19 @@ list.insert(400);
 LinkedList.prototype.RemoveDuplicate = function (list) {
     let current = list.head.next;
     let prev = list.head;
-    while (prev.next != null) {
-        if(current.node === prev.node){                 
-            prev.next = current.next
-            current = current.next;
-        } else{
-        prev = current;
-        current = current.next;        
+    let remove = null;
+    while (prev != null && prev.next != null) {
+        current = prev;
+        while (current.next != null) {
+            if(current.next.node === prev.node){   
+                remove = current.next;              
+                current.next = current.next.next;                              
+            } else {
+                current = current.next;                
+            }            
         }
+        prev = prev.next;                
+        
     }
     return list;
 }
