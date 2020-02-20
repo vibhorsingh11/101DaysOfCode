@@ -29,16 +29,15 @@ list.Insert(400);
 list.Insert(300);
 list.Insert(200);
 
-LinkedList.prototype.Reverse = function (list) {
-    if (list.head == null || list.head.next == null) {
-        return list.head;
+LinkedList.prototype.Reverse = function (head) {
+    if (head == null || head.next == null) {
+        return head;
     }
-
-    let newNode = LinkedList.prototype.Reverse(list.head.next);
-    list.head.next.next = list.head;
-    list.head.next = null;
+    let newNode = LinkedList.prototype.Reverse(head.next);
+    head.next.next = head;
+    head.next = null;
     return newNode;
 }
 
-let res = LinkedList.prototype.Reverse(list);
+let res = LinkedList.prototype.Reverse(list.head);
 console.log(res);
