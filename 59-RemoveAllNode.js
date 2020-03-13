@@ -32,22 +32,30 @@ list.Insert(2);
 list.Insert(1);
 
 LinkedList.prototype.RemoveNodes = function(head, x) {
-    let newNode = new Node();
+    let temp = new Node();
     if(head == null) {
         return;
     } else {
-        let current = head;
-        let prev = newNode;
-        while(current != null) {
-            if(current.node == x) {
-                prev = current.next
-                current = null //current.next;
-            } else {
-                prev = current;
-                current = current.next;
-            }            
-        }
-        return prev;
+        temp = head;
+        let prev = null;
+        while (temp != null && temp.node == x)  
+        {  
+            head = temp.next; 
+            temp = head;          
+        }  
+      
+        while (temp != null)  
+        {
+            while (temp != null && temp.node != x)  
+            {  
+                prev = temp;  
+                temp = temp.next;  
+            } 
+            if (temp == null) return; 
+            prev.next = temp.next;
+            temp = prev.next;  
+        } 
+        return head;
     }
 }
 
